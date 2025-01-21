@@ -1,6 +1,6 @@
 const mongoose = requre('mongoose'); // First we need mongoose to create our model
 
-// Scema defines the structure of the data
+// Schema defines the structure of the data
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
