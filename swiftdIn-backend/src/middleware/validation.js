@@ -43,12 +43,17 @@ const checkPasswordInput = (userInputPassword) => {
 }
 
 const checkFirstNameInput = (userInputFirstName) => {
-    if(!userInputName){
+    if(!userInputFirstName){
         return{
             isValid: false,
             error: 'First name is required'
         };
     }
+
+    return{
+        isValid: true,
+        error: null
+    };
 }
 
 const checkLastNameInput = (userInputLastName) => {
@@ -58,4 +63,16 @@ const checkLastNameInput = (userInputLastName) => {
             error: 'Last name is required'
         };
     }
+
+    return{
+        isValid: true,
+        error: null
+    };
+}
+
+module.exports = {
+    checkEmailInput,
+    checkPasswordInput,
+    checkFirstNameInput,
+    checkLastNameInput
 }
