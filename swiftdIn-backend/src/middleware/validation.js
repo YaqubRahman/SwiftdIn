@@ -20,3 +20,24 @@ return{
     error: null
 };
 }
+
+const checkPasswordInput = (userInputPassword) => {
+    if(!userInputPassword){
+        return{
+            isValid: false,
+            error: 'Password is required'
+        };
+    }
+
+    if(userInputPassword.length < 10){
+        return{
+            isValid: false,
+            error: 'Password must be at least 10 characters long'
+        };
+    }
+
+    return{
+        isValid: true,
+        error: null
+    };
+}
