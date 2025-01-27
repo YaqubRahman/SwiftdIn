@@ -41,3 +41,21 @@ const checkPasswordInput = (userInputPassword) => {
         error: null
     };
 }
+
+const checkFirstNameInput = (userInputFirstName) => {
+    if(!userInputName){
+        return{
+            isValid: false,
+            error: 'First name is required'
+        };
+    }
+}
+
+const checkLastNameInput = (userInputLastName) => {
+    if(!userInputLastName){
+        return{
+            isValid: false,
+            error: 'Last name is required'
+        };
+    }
+}
