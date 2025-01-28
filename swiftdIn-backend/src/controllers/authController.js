@@ -1,4 +1,6 @@
-const User = require('../models/User')
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10; // Typically a value between 10 and 12
@@ -47,3 +49,28 @@ if (result) {
     console.log('Passwords do not match! Authentication failed');
 }
 });
+
+// JWT SECTION
+
+function generateAccessToken = (user){
+    const payload = {
+        id: user.id,
+        email: user.email
+    };
+
+    const secret = '123thesecretkey'
+    const options = {expiresIn: '1h'};
+
+    return jwt.sign(payload, secret, options);
+}
+
+function verifyAccessToken(token){
+    const secret = '123thesecretkey';
+
+    try {
+        const decoded = jwt.verify(token, secret);
+        return { success: true, data:decoded};
+    } catch(error){
+        return{ success: false, error:error.message};
+    }
+}
