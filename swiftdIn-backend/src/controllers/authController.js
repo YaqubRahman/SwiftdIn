@@ -52,7 +52,7 @@ if (result) {
 
 // JWT SECTION
 
-function generateAccessToken = (user){
+const generateAccessToken = (user) => {
     const payload = {
         id: user.id,
         email: user.email
@@ -64,7 +64,7 @@ function generateAccessToken = (user){
     return jwt.sign(payload, secret, options);
 }
 
-function verifyAccessToken(token){
+const  verifyAccessToken = (token) => {
     const secret = '123thesecretkey';
 
     try {
