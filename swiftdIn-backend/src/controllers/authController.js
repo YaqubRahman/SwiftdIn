@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
+// CHECKING EMAIL SECTION
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10; // Typically a value between 10 and 12
@@ -16,6 +17,8 @@ const checkExistingEmail = async (email) => {
         throw error;
     }
 }
+
+// HASING PASSWORD SECTION
 
 const hashPassword = (userInputPassword) => {
     bcrypt.genSalt(saltRounds, (err, salt) =>{
@@ -73,4 +76,35 @@ const  verifyAccessToken = (token) => {
     } catch(error){
         return{ success: false, error:error.message};
     }
+}
+
+
+// CREATING A NEW USER DOCUMENT
+
+const createUser = async (userEmail, hashedPassword, firstName, lastName) => {
+    try{
+        const newUser = await User.create({
+            email: userEmail,
+            password = hashedPassword,
+            firstName = firstName,
+            lastName = lastName
+        });
+        return newUser;
+
+    } catch (error) {
+        console.error('Error creating user:', error):
+        throw error;
+    }
+}
+
+
+
+
+
+module.exports = {
+    checkExistingEmail,
+    hashPassword,
+    generateAccessToken,
+    verifyAccessToken,
+    createUser
 }
