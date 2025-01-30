@@ -4,7 +4,7 @@ const { checkExistingEmail, hashPassword, comparePassword, generateAccessToken, 
 const { checkEmailInput, checkPasswordInput, checkFirstNameInput, checkLastNameInput } = require('../middleware/validation');
 
 
-router.get("/register", (req, res) => {
+router.get("/register", async (req, res) => {
     try{
         const {email, password, firstName, lastName} = req.body;
 
@@ -53,7 +53,7 @@ router.get("/register", (req, res) => {
             } 
         });
     }
-    
+
     catch (error){
             console.error('Registration Error:', error);
             res.status.json({error: 'Internal server error'})
