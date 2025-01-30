@@ -9,7 +9,6 @@ const saltRounds = 10; // Typically a value between 10 and 12
 const checkExistingEmail = async (email) => {
     try{
         const existingUser = await User.findOne({ email: email});
-
         return existingUser != null;
 
     } catch (error) {
@@ -42,6 +41,25 @@ const comparePassword = async (userInputPassword, storedHashedPassword) => {
 };
 
 
+// CREATING A NEW USER DOCUMENT
+
+const createUser = async (userEmail, hashedPassword, firstName, lastName) => {
+    try{
+        const newUser = await User.create({
+            email: userEmail,
+            password: hashedPassword,
+            firstName: firstName,
+            lastName: lastName
+        });
+        return newUser;
+
+    } catch (error) {
+        console.error('Error creating user:', error);
+        throw error;
+    }
+}
+
+
 // JWT SECTION
 
 const generateAccessToken = (user) => {
@@ -67,24 +85,6 @@ const  verifyAccessToken = (token) => {
     }
 }
 
-
-// CREATING A NEW USER DOCUMENT
-
-const createUser = async (userEmail, hashedPassword, firstName, lastName) => {
-    try{
-        const newUser = await User.create({
-            email: userEmail,
-            password: hashedPassword,
-            firstName: firstName,
-            lastName: lastName
-        });
-        return newUser;
-
-    } catch (error) {
-        console.error('Error creating user:', error);
-        throw error;
-    }
-}
 
 
 module.exports = {
