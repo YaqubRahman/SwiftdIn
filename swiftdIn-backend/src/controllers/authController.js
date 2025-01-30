@@ -20,38 +20,27 @@ const checkExistingEmail = async (email) => {
 
 // HASING PASSWORD SECTION
 
-const hashPassword = (userInputPassword) => {
-    bcrypt.genSalt(saltRounds, (err, salt) =>{
-        if(err){
-            console.error('Error generating salt:', err);
-            return;
-        }
-
-        bycrypt.hash(userInputPassword, salt, (err, hash) => {
-            if(err){
-                console.error('Error hashing password:', err);
-                return;
-            }
-
-            console.log('Hashed password:', hash);
-        });
-    });
+const hashPassword =  async (userInputPassword) => {
+    try{
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hash = await bcrypt.hash(userInputPassword, salt);
+        return hash;
+    } catch (error) {
+        console.error('Error hashing passwords', error);
+        throw error;
+    }
 };
 
-
-bcrypt.compare(userInputPassword, storedHashedPassword, (err,result) => {
-    if (err){
-        console.error('Error comparing passwords:', err);
-        return;
+const comparePassword = async (userInputPassword, storedHashedPassword) => {
+    try{
+        isMatch = await bcrypt.compare(userInputPassword, storedHashedPassword);
+        return isMatch;
+    } catch (error) {
+        console.error('Error comparing passwords:', error);
+        throw error;
     }
+};
 
-    
-if (result) {
-    console.log('Passwords match! User authenticated.');
-} else{
-    console.log('Passwords do not match! Authentication failed');
-}
-});
 
 // JWT SECTION
 
@@ -85,25 +74,23 @@ const createUser = async (userEmail, hashedPassword, firstName, lastName) => {
     try{
         const newUser = await User.create({
             email: userEmail,
-            password = hashedPassword,
-            firstName = firstName,
-            lastName = lastName
+            password: hashedPassword,
+            firstName: firstName,
+            lastName: lastName
         });
         return newUser;
 
     } catch (error) {
-        console.error('Error creating user:', error):
+        console.error('Error creating user:', error);
         throw error;
     }
 }
 
 
-
-
-
 module.exports = {
     checkExistingEmail,
     hashPassword,
+    comparePassword,
     generateAccessToken,
     verifyAccessToken,
     createUser
