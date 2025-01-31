@@ -1,7 +1,9 @@
+const User = require('../models/User');
 const express = require('express');
 const router = express.Router();
 const { checkExistingEmail, hashPassword, comparePassword, generateAccessToken, createUser } = require('../controllers/authController');
 const { checkEmailInput, checkPasswordInput, checkFirstNameInput, checkLastNameInput } = require('../middleware/validation');
+
 
 
 router.post("/register", async (req, res) => {
@@ -14,16 +16,16 @@ router.post("/register", async (req, res) => {
         const lastNameValidation = checkLastNameInput(lastName);
 
         // Checking for any validation failure
-        if (!emailValidation){
+        if (!emailValidation.isValid){
             return res.status(400).json({ error: emailValidation.error });
         }
-        if (!passwordValidation){
+        if (!passwordValidation.isValid){
             return res.status(400).json({ error: passwordValidation.error });
         }
-        if (!firstNameValidation){
+        if (!firstNameValidation.isValid){
             return res.status(400).json({ error: firstNameValidation.error });
         }
-        if (!lastNameValidation){
+        if (!lastNameValidation.isValid){
             return res.status(400).json({ error: lastNameValidation.error });
         }
 
@@ -56,33 +58,36 @@ router.post("/register", async (req, res) => {
 
     catch (error){
             console.error('Registration Error:', error);
-            res.status.json({error: 'Internal server error'})
+            res.status(500).json({error: 'Internal server error'})
     }
 });
 
 router.post("/login", async (req, res) =>{
     try{
         const{email, password} = req.body;
-
+2
         const emailValidation = checkEmailInput(email);
         const passwordValidation = checkPasswordInput(password);
 
         // Checking for any validation failure
-        if(!emailValidation){
+        if(!emailValidation.isValid){
             return res.status(400).json({ error: emailValidation.error });
         }
-        if(!passwordValidation){
+        if(!passwordValidation.isValid){
             return res.status(400).json({ error: passwordValidation.error });
         }
-
+        
+        // Checking if the user email exists
         const user = await User.findOne({email});
         if(!user){
             return res.status(401).json({error: 'Invalid email or password'});
 
         }
 
+        
+        // Checking if the password is the same has the hash password
         const isPasswordValid = await comparePassword(password, user.password);
-        if (!isPasswordValid){
+        if (!isPasswordValid.isValid){
             return res.status(401).json({error: ' Invalid email of password'})
         }
 
