@@ -4,7 +4,7 @@ const { checkExistingEmail, hashPassword, comparePassword, generateAccessToken, 
 const { checkEmailInput, checkPasswordInput, checkFirstNameInput, checkLastNameInput } = require('../middleware/validation');
 
 
-router.get("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
     try{
         const {email, password, firstName, lastName} = req.body;
 
@@ -58,22 +58,51 @@ router.get("/register", async (req, res) => {
             console.error('Registration Error:', error);
             res.status.json({error: 'Internal server error'})
     }
-
-    
-
-    
-
-
-    
-
 });
 
-router.post("/login", (req, res) =>{
-    const {email, password} = req.body;
-    
-})
+router.post("/login", async (req, res) =>{
+    try{
+        const{email, password} = req.body;
 
+        const emailValidation = checkEmailInput(email);
+        const passwordValidation = checkPasswordInput(password);
 
+        // Checking for any validation failure
+        if(!emailValidation){
+            return res.status(400).json({ error: emailValidation.error });
+        }
+        if(!passwordValidation){
+            return res.status(400).json({ error: passwordValidation.error });
+        }
+
+        const user = await User.findOne({email});
+        if(!user){
+            return res.status(401).json({error: 'Invalid email or password'});
+
+        }
+
+        const isPasswordValid = await comparePassword(password, user.password);
+        if (!isPasswordValid){
+            return res.status(401).json({error: ' Invalid email of password'})
+        }
+
+        const token = generateAccessToken(user);
+
+        res.status(201).json({
+            message: 'User logged in successfully',
+            token,
+            user: {
+                id: user._id,
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName
+            }
+        });
+    } catch (error) {
+        console.error('Login Error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 
 module.exports = router;
