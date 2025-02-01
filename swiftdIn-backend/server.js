@@ -6,12 +6,17 @@ const mongoose = require('mongoose'); // MongoDB object modeling tool
 const cors = require('cors'); // Enables Cross-Origin Resource Sharing
 require('dotenv').config();// Loads environment variables from .env file
 
+const authRoutes = require('./src/routes/authRoutes');
+
 // Create an Express application
 const app = express();
 
 // Middleware setup
 app.use(cors());            // Allows frontend to communicate with backend
 app.use(express.json());    // Parses incoming JSON requests
+
+
+app.use('/auth', authRoutes);
 
 // Basic test route to verify server is working
 app.get('/test', (req, res) => {
