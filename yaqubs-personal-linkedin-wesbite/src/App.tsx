@@ -2,7 +2,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react'
 import './App.css'
 import Home from './pages/Home';
-import { LoginSignup } from './LoginSignup/LoginSignup';
+import { LoginSignup } from './pages/LoginSignup';
 
 export default function App() {
   return (
