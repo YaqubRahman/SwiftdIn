@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../assets/LoginSignupAssets/LoginSignup.css'
 
 
@@ -9,11 +9,32 @@ import email_icon from '../assets/LoginSignupAssets/envelope.png'
 import password_icon from '../assets/LoginSignupAssets/password.png' 
 
 
+const BASE_URL = 'http://localhost:5000/'; // My backend port
+
+
+useEffect(() => {
+  const fetchPosts = async () => {
+    try{
+      const response = await fetch(`${BASE_URL}/posts`);
+      if (!response.ok){
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+    } catch (error){
+      console.error('Failed to fetch ports:', error);
+    }
+  };
+
+  fetchPosts();  
+}, []);
+
+
+
+
+
 
 export const LoginSignup = () => {
-
   const [action,setAction] = useState("Login");
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,28 +54,31 @@ export const LoginSignup = () => {
 
 
   const handleSubmit = async () => {
-    if (action == 'Login'){
-      try{
-        console.log('Attempting to login with', {email:formData.email, password:formData.password});
+    const url = action === 'Login'
+    ?`${BASE_URL}/auth/login`
+    :`${BASE_URL}/auth/register`;
 
-        // LOGIN API CALL
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': `application/json`
+      },
+      body: JSON.stringify(formData)
+    });
 
-
-      } catch (error) {
-        console.error('Login error', error);
-      }
-    } else {
-      try{
-        console.log('Attempting to sign up with', formData);
-
-        // SIGNUP API CALL
-
-
-      } catch (error){
-        console.error('Sign Up error', error);
-      }
+    if (!response.ok){
+      throw new Error('Authentication failed');
     }
-  };
+    
+    const data = await response.json();
+    console.log(action + ' successful', data);
+
+  } catch(error){
+    console.error(`${action} error:`, error);
+  }
+
+};
 
 
 
@@ -126,12 +150,8 @@ export const LoginSignup = () => {
           } else{
             handleSubmit();
           }
-          
           }}>Login</div> 
-  
       </div>
-
-
     </div>
   )
 }
