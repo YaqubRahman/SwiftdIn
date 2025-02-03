@@ -50,7 +50,6 @@ export const LoginSignup = () => {
         // SIGNUP API CALL
 
 
-
       } catch (error){
         console.error('Sign Up error', error);
       }
@@ -69,17 +68,17 @@ export const LoginSignup = () => {
 
       <div className='inputs'>
         {action==='Login'?<div></div>:
-        <div className='input'>
+      <div className='input'>
         <img src={user_icon} alt=''/>
         <input
 
          type='text'
          name='name'
-         placeholder='Name'/>
+         placeholder='Name'
          value={formData.name}
          onChange={handleInputChange}
 
-
+         />
       </div>}
 
   
@@ -117,7 +116,19 @@ export const LoginSignup = () => {
 
       <div className="submit-container">
         <div className={action=='Login'? 'submit gray': 'submit'} onClick={()=>{setAction('Sign Up')}}>Sign Up</div> {/*When you click sign up */}
-        <div className={action=='Sign Up'?'submit gray': 'submit'}onClick={()=>{setAction('Login')}}>Login</div>     {/*When you click login */}
+        
+
+       {/*When you click login */}  
+        <div className={action=='Sign Up' ?'submit gray': 'submit'}
+        onClick={()=>{
+          if (action == 'Sign Up'){
+            setAction('Login');
+          } else{
+            handleSubmit();
+          }
+          
+          }}>Login</div> 
+  
       </div>
 
 
