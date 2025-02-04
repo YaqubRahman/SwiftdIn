@@ -9,7 +9,7 @@ import email_icon from '../assets/LoginSignupAssets/envelope.png'
 import password_icon from '../assets/LoginSignupAssets/password.png' 
 
 
-const BASE_URL = 'http://localhost:5000/'; // My backend port
+const BASE_URL = 'http://localhost:5000'; // My backend port
 
 
 useEffect(() => {
