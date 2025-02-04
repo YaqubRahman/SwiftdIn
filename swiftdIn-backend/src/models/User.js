@@ -1,4 +1,4 @@
-const mongoose = requre('mongoose'); // First we need mongoose to create our model
+const mongoose = require('mongoose'); // First we need mongoose to create our model
 
 // Schema defines the structure of the data
 const userSchema = new mongoose.Schema({

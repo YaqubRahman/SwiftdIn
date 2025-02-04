@@ -36,7 +36,8 @@ useEffect(() => {
 export const LoginSignup = () => {
   const [action,setAction] = useState("Login");
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
   });
@@ -72,6 +73,7 @@ export const LoginSignup = () => {
     }
     
     const data = await response.json();
+    console.log('Response:', data);
     console.log(action + ' successful', data);
 
   } catch(error){
@@ -97,9 +99,9 @@ export const LoginSignup = () => {
         <input
 
          type='text'
-         name='name'
-         placeholder='Name'
-         value={formData.name}
+         name='firstName'
+         placeholder='First Name'
+         value={formData.firstName}
          onChange={handleInputChange}
 
          />
