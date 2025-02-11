@@ -24,7 +24,7 @@ app.get('/test', (req, res) => {
 })
 
 // Set up port - uses enviroment vairbale or defaults to 5000
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 
 // Connect to MonogDB and start server

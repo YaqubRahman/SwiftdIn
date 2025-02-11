@@ -33,7 +33,7 @@ const hashPassword =  async (userInputPassword) => {
 const comparePassword = async (userInputPassword, storedHashedPassword) => {
     try{
         isMatch = await bcrypt.compare(userInputPassword, storedHashedPassword);
-        return isMatch;
+        return {isValid: isMatch};
     } catch (error) {
         console.error('Error comparing passwords:', error);
         throw error;

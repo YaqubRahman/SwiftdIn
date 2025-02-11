@@ -1,6 +1,5 @@
-import { useForm } from 'react-hook-form'
-
-import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import React, { useState} from 'react'
 import '../assets/LoginSignupAssets/LoginSignup.css'
 
 
@@ -12,28 +11,8 @@ import password_icon from '../assets/LoginSignupAssets/password.png'
 const BASE_URL = 'http://localhost:5000'; // My backend port
 
 
-useEffect(() => {
-  const fetchPosts = async () => {
-    try{
-      const response = await fetch(`${BASE_URL}/posts`);
-      if (!response.ok){
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-    } catch (error){
-      console.error('Failed to fetch ports:', error);
-    }
-  };
-
-  fetchPosts();  
-}, []);
-
-
-
-
-
-
 export const LoginSignup = () => {
+  const navigate = useNavigate();
   const [action,setAction] = useState("Login");
   const [formData, setFormData] = useState({
     firstName: '',
@@ -42,6 +21,25 @@ export const LoginSignup = () => {
     password: ''
   });
 
+
+
+  /*
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try{
+        const response = await fetch(`${BASE_URL}/posts`);
+        if (!response.ok){
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+      } catch (error){
+        console.error('Failed to fetch ports:', error);
+      }
+    };
+  
+    fetchPosts();  
+  }, []);
+*/
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -69,10 +67,20 @@ export const LoginSignup = () => {
     });
 
     if (!response.ok){
-      throw new Error('Authentication failed');
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Authentication failed');
     }
     
     const data = await response.json();
+
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+
+    navigate('/home');
+
+
+
+
     console.log('Response:', data);
     console.log(action + ' successful', data);
 
@@ -85,6 +93,7 @@ export const LoginSignup = () => {
 
 
   return (
+  <div className='background'>
     <div className='container'>
       <div className='header'>
         <div className='text'>{action}</div>
@@ -106,6 +115,21 @@ export const LoginSignup = () => {
 
          />
       </div>}
+
+      {action==='Login'?<div></div>:
+      <div className='input'>
+        <img src={user_icon} alt=''/>
+        <input
+
+         type='text'
+         name='lastName'
+         placeholder='Last Name'
+         value={formData.lastName}
+         onChange={handleInputChange}
+
+         />
+      </div>}
+      
 
   
 
@@ -141,7 +165,13 @@ export const LoginSignup = () => {
 
 
       <div className="submit-container">
-        <div className={action=='Login'? 'submit gray': 'submit'} onClick={()=>{setAction('Sign Up')}}>Sign Up</div> {/*When you click sign up */}
+        <div className={action=='Login'? 'submit gray': 'submit'}
+        onClick={()=>{
+          if(action === 'Sign Up') {
+            handleSubmit();
+          } else { setAction('Sign Up') }
+          }
+          }>Sign Up</div> {/*When you click sign up */}
         
 
        {/*When you click login */}  
@@ -155,5 +185,6 @@ export const LoginSignup = () => {
           }}>Login</div> 
       </div>
     </div>
+  </div>
   )
 }
