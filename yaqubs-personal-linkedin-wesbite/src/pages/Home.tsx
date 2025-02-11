@@ -1,59 +1,61 @@
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
 import pfp from '../assets/pfpplaceholder.png'
 import flag from '../assets/UKflag.png'
-import '../App.css'
+import '../components/Home.css'
 
 
 function Home() {
     return (
         <>
-        <div className='black'>
+        <div className='homefont'>
         <h1>SwiftdIn</h1>
 
     <div className="container">    
     <div className="namecard">
 
         <img src={pfp} className="logo" alt="pfp PlaceHolder" />
+        <div className='homefont'>
       <h1>Johnson</h1>
+      </div>
       
       <p>Junior Software Engineer</p>
 
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+      <p>Currently working at SwiftdIn as a full stack engineer</p>
 
         <img src={flag} className="flag"alt="British Flag" />
+
+        <p>UK</p>
     </div>
 
 
 
       <div className="card">
-        <h2>Trending</h2>
+        <h2>Experience</h2>
         
         <div className='trending'>
         <p>
-          1.Edit and save to test HMR<br></br>
-          2.Edit and save to test HMR<br></br>
-          3.Edit and save to test HMR<br></br>
-          4.Edit and save to test HMR<br></br>
-          5.Edit and save to test HMR<br></br>
+          2018-Present Meta - Junior Software Engineer<br></br>
+          2014-2018 Netflix - Junior Software Engineer<br></br>
+          2009-2014 Amazon - Junior Software Engineer<br></br>
+          2008-2009 Apple - Junior Software Engineer<br></br>
+          2006-2008 Microsoft - Junior Software Engineer<br></br>
         </p>
         </div>
 
       </div>
 
       <div className="card">
-        <p>yoo</p>
+        <p>Available</p>
 
         </div>
         </div>
 
 
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        This is a work in progress
       </p>
 
-
       </div>
+
         </>
     )
 }
