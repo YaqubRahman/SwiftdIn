@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    country: {
+        type:String,
+        required: false
+    },
     headline: String,           // This is a shorter way to define optional fields
     location: String        
 }, {

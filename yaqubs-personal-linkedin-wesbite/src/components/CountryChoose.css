@@ -1,0 +1,22 @@
+.flag-flex-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Adjust height as needed */
+    flex-wrap: wrap; 
+  }
+
+
+.flagchoose {
+    margin:30px;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    transition: filter 300ms;
+    cursor:pointer;
+  }
+
+.flagchoose:hover{
+    filter: drop-shadow(0 0 2em #00c8ff);
+    transform: scale(1.2);
+}

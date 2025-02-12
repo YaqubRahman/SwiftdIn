@@ -9,12 +9,13 @@ function Home() {
         <div className='homefont'>
         <h1>SwiftdIn</h1>
 
-    <div className="container">    
+  <div className="containerhome">    
     <div className="namecard">
 
         <img src={pfp} className="logo" alt="pfp PlaceHolder" />
-        <div className='homefont'>
+      <div className='homefont'>
       <h1>Johnson</h1>
+
       </div>
       
       <p>Junior Software Engineer</p>
@@ -54,7 +55,7 @@ function Home() {
         This is a work in progress
       </p>
 
-      </div>
+  </div>
 
         </>
     )
