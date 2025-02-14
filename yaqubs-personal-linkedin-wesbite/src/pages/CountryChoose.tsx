@@ -8,9 +8,34 @@ import IraqFlag from '../assets/CountryChoose/Iraq.png';
 import PakistanFlag from '../assets/CountryChoose/Pakistan.png';
 import MalasiaFlag from '../assets/CountryChoose/Malasia.png';
 import EgyptFlag from '../assets/CountryChoose/Egypt.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function CountryChoose() {
+    const navigate = useNavigate();
+
+    const countries = [
+        { code: 'BD', flag: BangladeshFlag},
+        { code: 'LB', name: 'Lebanon', flag: LebanonFlag },
+        { code: 'TR', name: 'Turkey', flag: TurkishFlag },
+        { code: 'SA', name: 'Saudi Arabia', flag: SaudiFlag },
+        { code: 'IQ', name: 'Iraq', flag: IraqFlag },
+        { code: 'PK', name: 'Pakistan', flag: PakistanFlag },
+        { code: 'MY', name: 'Malaysia', flag: MalasiaFlag },
+        { code: 'EG', name: 'Egypt', flag: EgyptFlag }
+    ];
+
+    const HandleCountrySelect = async (countryCode: string) => {
+        try{
+
+        } catch(error){
+            console.error('Error setting country:', error)
+            setError('Failed to set country. Please try again.')
+
+        }
+    };
+
+
+
     return(
         <>
         <div className='flag-flex-container'>
