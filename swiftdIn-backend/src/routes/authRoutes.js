@@ -111,14 +111,22 @@ router.post("/login", async (req, res) =>{
 
 
 
-router.put("/country", async(req, res) =>{
+router.put("/country", authenticateToken, async(req, res) =>{
     try{
         const{country} = req.body;
+
+        if(!country){
+            return res.status(400).json({ error: 'Country selection is required'})
+        }
+
         const user = await User.findById(req.user.id);
 
         if(!user){
-            return res.status(400).json({ error: 'User not found'});
+            return res.status(404).json({ error: 'User not found'});
         }
+
+        user.country = country;
+        await user.save();
 
 
         res.status(200).json({
