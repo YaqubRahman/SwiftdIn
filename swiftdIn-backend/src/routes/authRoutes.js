@@ -65,7 +65,6 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) =>{
     try{
         const{email, password} = req.body;
-2
         const emailValidation = checkEmailInput(email);
         const passwordValidation = checkPasswordInput(password);
 
@@ -108,6 +107,37 @@ router.post("/login", async (req, res) =>{
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+
+
+router.put("/country", async(req, res) =>{
+    try{
+        const{country} = req.body;
+        const user = await User.findById(req.user.id);
+
+        if(!user){
+            return res.status(400).json({ error: 'User not found'});
+        }
+
+
+        res.status(200).json({
+            message: 'User Country registered successfully', country,
+            user:{
+                id: user._id,
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                country: user.country
+            }
+        });
+    }
+    catch (error){
+        console.error('Country Error:', error)
+        res.status(500).json({error: 'Internal server error'})
+    }
+}); 
+
 
 
 module.exports = router;
