@@ -26,11 +26,22 @@ function CountryChoose() {
 
     const HandleCountrySelect = async (countryCode: string) => {
         try{
+            const token = localStorage.getItem('token');
 
+            const response = await fetch('/auth/country', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': `application/json`,
+                    'Authorisation': `Bearer ${token}`
+                },
+                body: JSON.stringify({ country: countryCode})
+            })
+
+            if (response.ok){
+                navigate('/home')
+            }
         } catch(error){
             console.error('Error setting country:', error)
-            setError('Failed to set country. Please try again.')
-
         }
     };
 
@@ -39,7 +50,7 @@ function CountryChoose() {
         <>
         <div className='flag-flex-container'>
         <h1>Choose your Country:</h1>
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('BD') } className="flagButton">
         <img src={BangladeshFlag} className="flagchoose"alt="Bangladesh Flag" />
         </button>
 
