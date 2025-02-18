@@ -6,6 +6,19 @@
     flex-wrap: wrap; 
   }
 
+.flagButton{
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:30px;
+}
 
 .flagchoose {
     margin:30px;

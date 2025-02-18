@@ -35,26 +35,43 @@ function CountryChoose() {
     };
 
 
-
     return(
         <>
         <div className='flag-flex-container'>
         <h1>Choose your Country:</h1>
-        
-        <Link to="/countrychoose">
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={BangladeshFlag} className="flagchoose"alt="Bangladesh Flag" />
-        </Link>
+        </button>
 
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={LebanonFlag} className="flagchoose"alt=":Lebanon Flag" />
+        </button>
+
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={TurkishFlag} className="flagchoose"alt="Turkish Flag" />
+        </button>
+
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={SaudiFlag} className="flagchoose"alt="Saudi Flag" />
+        </button>
+
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={IraqFlag} className="flagchoose"alt="Iraq Flag" />
+        </button>
+
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={PakistanFlag} className="flagchoose"alt="Pakistan Flag" />
+        </button>
+
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={EgyptFlag} className="flagchoose"alt="Egypt Flag" />
+        </button>
+
+        <button onClick={() => navigate('/home')} className="flagButton">
         <img src={MalasiaFlag} className="flagchoose"alt="Malasia Flag" />
+        </button>
         
         </div>
-        
         </>
     )
 }
