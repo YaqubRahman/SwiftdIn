@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { checkExistingEmail, hashPassword, comparePassword, generateAccessToken, createUser } = require('../controllers/authController');
 const { checkEmailInput, checkPasswordInput, checkFirstNameInput, checkLastNameInput } = require('../middleware/validation');
+const { } = require('../middleware/jwtMiddlware');
 
 
 

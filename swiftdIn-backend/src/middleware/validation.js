@@ -70,6 +70,7 @@ const checkLastNameInput = (userInputLastName) => {
     };
 }
 
+
 module.exports = {
     checkEmailInput,
     checkPasswordInput,
