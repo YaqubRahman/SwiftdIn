@@ -10,6 +10,8 @@ import MalasiaFlag from '../assets/CountryChoose/Malasia.png';
 import EgyptFlag from '../assets/CountryChoose/Egypt.png';
 import { Link, useNavigate } from 'react-router-dom';
 
+const BASE_URL = 'http://localhost:5000'; // My backend port
+
 function CountryChoose() {
     const navigate = useNavigate();
 
@@ -28,11 +30,11 @@ function CountryChoose() {
         try{
             const token = localStorage.getItem('token');
 
-            const response = await fetch('/auth/country', {
+            const response = await fetch(`${BASE_URL}/auth/country`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': `application/json`,
-                    'Authorisation': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ country: countryCode})
             })
@@ -54,31 +56,31 @@ function CountryChoose() {
         <img src={BangladeshFlag} className="flagchoose"alt="Bangladesh Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('LB') } className="flagButton">
         <img src={LebanonFlag} className="flagchoose"alt=":Lebanon Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('TR') } className="flagButton">
         <img src={TurkishFlag} className="flagchoose"alt="Turkish Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('SA') } className="flagButton">
         <img src={SaudiFlag} className="flagchoose"alt="Saudi Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('IQ') } className="flagButton">
         <img src={IraqFlag} className="flagchoose"alt="Iraq Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('PK') } className="flagButton">
         <img src={PakistanFlag} className="flagchoose"alt="Pakistan Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('EG') } className="flagButton">
         <img src={EgyptFlag} className="flagchoose"alt="Egypt Flag" />
         </button>
 
-        <button onClick={() => navigate('/home')} className="flagButton">
+        <button onClick={() => HandleCountrySelect('MY') } className="flagButton">
         <img src={MalasiaFlag} className="flagchoose"alt="Malasia Flag" />
         </button>
         
