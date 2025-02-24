@@ -30,7 +30,7 @@ function CountryChoose() {
         try{
             const token = localStorage.getItem('token');
 
-            const response = await fetch(`${BASE_URL}/auth/country`, {
+            const response = await fetch(`${BASE_URL}/auth/countrychoose`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': `application/json`,
