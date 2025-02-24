@@ -16,7 +16,7 @@ function CountryChoose() {
     const navigate = useNavigate();
 
     const countries = [
-        { code: 'BD', flag: BangladeshFlag},
+        { code: 'BD', flag: 'Bangladesh',flage: BangladeshFlag},
         { code: 'LB', name: 'Lebanon', flag: LebanonFlag },
         { code: 'TR', name: 'Turkey', flag: TurkishFlag },
         { code: 'SA', name: 'Saudi Arabia', flag: SaudiFlag },
