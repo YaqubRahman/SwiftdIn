@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
+
 // CHECKING EMAIL SECTION
 
 const bcrypt = require('bcrypt');
@@ -68,17 +69,15 @@ const generateAccessToken = (user) => {
         email: user.email
     };
 
-    const secret = '123thesecretkey'
     const options = {expiresIn: '1h'};
 
-    return jwt.sign(payload, secret, options);
+    return jwt.sign(payload, process.env.JWT_SECRET, options);
 }
 
 const  verifyAccessToken = (token) => {
-    const secret = '123thesecretkey';
 
     try {
-        const decoded = jwt.verify(token, secret);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         return { success: true, data:decoded};
     } catch(error){
         return{ success: false, error:error.message};

@@ -29,6 +29,7 @@ function CountryChoose() {
     const HandleCountrySelect = async (countryCode: string) => {
         try{
             const token = localStorage.getItem('token');
+            console.log('Token found:', token ? 'Yes': 'No', token ? token.substring(0, 10) + '...' : '');
 
             const response = await fetch(`${BASE_URL}/auth/countrychoose`, {
                 method: 'PUT',
@@ -41,6 +42,9 @@ function CountryChoose() {
 
             if (response.ok){
                 navigate('/home')
+            } else{
+                const errorData = await response.json();
+                console.error('Server response:', response.status, errorData);
             }
         } catch(error){
             console.error('Error setting country:', error)
