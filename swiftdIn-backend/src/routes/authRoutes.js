@@ -112,7 +112,7 @@ router.post("/login", async (req, res) =>{
 
 
 
-router.put("/country", authenticateToken, async(req, res) =>{
+router.put("/countrychoose", authenticateToken, async(req, res) =>{
     try{
         
         const{country} = req.body;
