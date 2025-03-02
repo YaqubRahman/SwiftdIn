@@ -25,6 +25,10 @@ const countries = [
 
 const country = localStorage.getItem('country');
 
+const userString = localStorage.getItem('user');
+const userData = userString ? JSON.parse(userString) : null;
+const user_name = userData ? userData.firstName : '';
+
 function getCountryCode(){
   console.log('Country from localStorage:', country);
   for (let i=0; i < countries.length; i++){
@@ -46,6 +50,7 @@ function getCountryName(){
   }
 }
 
+
 function Home() {
     return (
         <>
@@ -57,7 +62,7 @@ function Home() {
 
         <img src={pfp} className="logo" alt="pfp PlaceHolder" />
       <div className='homefont'>
-      <h1>Johnson</h1>
+      <h1>{user_name}</h1>
 
       </div>
       
