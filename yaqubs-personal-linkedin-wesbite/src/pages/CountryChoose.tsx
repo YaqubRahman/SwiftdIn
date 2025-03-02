@@ -16,7 +16,7 @@ function CountryChoose() {
     const navigate = useNavigate();
 
     const countries = [
-        { code: 'BD', flag: 'Bangladesh',flage: BangladeshFlag},
+        { code: 'BD', name: 'Bangladesh',flag: BangladeshFlag},
         { code: 'LB', name: 'Lebanon', flag: LebanonFlag },
         { code: 'TR', name: 'Turkey', flag: TurkishFlag },
         { code: 'SA', name: 'Saudi Arabia', flag: SaudiFlag },
@@ -29,6 +29,8 @@ function CountryChoose() {
     const HandleCountrySelect = async (countryCode: string) => {
         try{
             const token = localStorage.getItem('token');
+
+            // Debugging for an error I had encountered with the token
             console.log('Token found:', token ? 'Yes': 'No', token ? token.substring(0, 10) + '...' : '');
 
             const response = await fetch(`${BASE_URL}/auth/countrychoose`, {
@@ -41,6 +43,8 @@ function CountryChoose() {
             })
 
             if (response.ok){
+                localStorage.setItem('country', countryCode);
+                console.log('Country', countryCode)
                 navigate('/home')
             } else{
                 const errorData = await response.json();
