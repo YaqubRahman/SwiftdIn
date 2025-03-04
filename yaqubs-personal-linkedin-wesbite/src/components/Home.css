@@ -2,6 +2,70 @@
     color: #383D3B;
     font-family: 'Roboto', sans-serif;
 }
+.containerhome {
+    display: flex;
+    flex-direction: column; /* Align items in a row */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start; /* Align items to the top */
+    gap: 2rem; /* Add space between items */
+    border-width: 10px;
+    border-color: rgb(81, 255, 0);
+    border-style:solid;
+  }
+  
+  .namecard {
+    padding: 2em;
+    color: black;
+    background-color: #D1E8E2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    text-align: center;
+    margin: 0; /* Remove auto margin */
+    border-width: 10px;
+    border-color: red;
+    border-style:solid;
+  }
+  
+  .card {
+    background-color: #D1E8E2;
+    color: black;
+    width: 350px;
+    height: auto; /* Ensure height adjusts to content */
+    margin-top: 0rem; /* Add margin all around */
+    text-align: center;
+    padding: 30px;
+  }
+
+  .paragraph-font p{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #4A4E69;
+    border-radius: 10%;
+    padding:10px;
+    margin-bottom: 1rem;
+    font-size: 1.3lh;
+  }
+
+  .logo-connections {
+    height: 5em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  
+  .trending {
+    font-size: 0.8lh;
+  }
+  
+  .flag {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .read-the-docs {
+    color: #888;
+  }
 
 .parent-container{
     display: flex;
