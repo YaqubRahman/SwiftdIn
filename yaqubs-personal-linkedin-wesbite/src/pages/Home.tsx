@@ -56,8 +56,9 @@ function Home() {
         <>
         <div className='homefont'>
         <h1>SwiftdIn</h1>
-
-  <div className="containerhome">    
+<div className="parent-container">
+  <div className="containerhome">
+    <div className="childcontainer1">    
     <div className="namecard">
 
         <img src={pfp} className="logo" alt="pfp PlaceHolder" />
@@ -103,9 +104,15 @@ function Home() {
       <p className="read-the-docs">
         This is a work in progress
       </p>
-
+      </div>
   </div>
 
+  <div className="containerconnections">
+    <h2>Connections List:</h2>
+
+
+  </div>
+</div>
         </>
     )
 }

@@ -3,5 +3,33 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.parent-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+
+    
+
+    border-width: 10px;
+    border-color: rgb(238, 0, 255);
+    border-style:solid;
+}
+
+.childcontainer1{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.containerconnections{
+    display: flex;
+    flex-direction: column; /* Align items in a row */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start;
+    
+
+}
 
 /*05445E*/
