@@ -103,12 +103,26 @@ function Home() {
           <div className="card">
           <h2>Connections List:</h2>
           <div className="paragraph-font">
+            <div className="connection-item">
           <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
           <p>Talip Tun</p>
+            </div>
+            
+            <div className="connection-item">
+          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
           <p>Yaseen Barlas</p>
+            </div>
+
+            <div className="connection-item">
+          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
           <p>Ahmad Sabsaby</p>
+            </div>
+
+          <div className="connection-item">
+          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
           <p>Sayed Iqbal</p>
-          
+          </div>
+
           </div>
           </div>
         </div>
