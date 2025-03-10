@@ -52,12 +52,12 @@ function getCountryName() {
 function Home() {
   return (
     <>
-      <div className="homefont">
+    <div className="home-header homefont">
         <h1>SwiftdIn</h1>
-
         <div className="home-search-bar">
           <input type="text" placeholder="Search..."/>
         </div>
+    </div>
 
         <div className="parent-container">
           <div className="containerhome">
@@ -135,7 +135,6 @@ function Home() {
 
         </div>
 
-      </div>
     </>
   );
 }
