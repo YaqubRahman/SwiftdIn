@@ -26,6 +26,10 @@
   border-radius: 4%;  
 }
 
+.home-search-bar  input[type=text]:hover {
+  filter: drop-shadow(0 0 1em #00c8ff);
+}
+
 .containerhome {
     display: flex;
     flex-direction: column; /* Align items in a row */

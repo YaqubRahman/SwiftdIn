@@ -72,6 +72,7 @@ function Home() {
 
                 <p>Currently working at SwiftdIn as a full stack engineer</p>
 
+
                 <img
                   src={getCountryCode()}
                   className="flag"
@@ -81,6 +82,10 @@ function Home() {
                 <p>{getCountryName()}</p>
               </div>
 
+            
+              <button>Upload Profile Picture</button>
+              
+              
               <div className="card">
                 <h2>Experience</h2>
 
