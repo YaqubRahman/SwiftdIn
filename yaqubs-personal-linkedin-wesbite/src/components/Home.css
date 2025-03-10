@@ -20,8 +20,10 @@
 .home-search-bar  input[type=text]{
   border: none;
   padding:20px;
+  margin-top: 5px;
   font-size: 20px;
   float:right;
+  border-radius: 4%;  
 }
 
 .containerhome {

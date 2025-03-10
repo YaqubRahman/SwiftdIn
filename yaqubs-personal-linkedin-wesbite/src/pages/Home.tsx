@@ -55,7 +55,7 @@ function Home() {
     <div className="home-header homefont">
         <h1>SwiftdIn</h1>
         <div className="home-search-bar">
-          <input type="text" placeholder="Search..."/>
+          <input type="text" placeholder="Search for users..."/>
         </div>
     </div>
 
