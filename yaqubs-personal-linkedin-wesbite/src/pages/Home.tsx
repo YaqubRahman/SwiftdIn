@@ -10,6 +10,7 @@ import IraqFlag from "../assets/CountryChoose/Iraq.png";
 import PakistanFlag from "../assets/CountryChoose/Pakistan.png";
 import MalasiaFlag from "../assets/CountryChoose/Malasia.png";
 import EgyptFlag from "../assets/CountryChoose/Egypt.png";
+import { useState } from "react";
 
 const countries = [
   { code: "BD", name: "Bangladesh", flag: BangladeshFlag },
@@ -49,7 +50,25 @@ function getCountryName() {
   }
 }
 
+
+
 function Home() {
+  const [file, setFile] = useState<File | undefined>();
+  const [imageURL, setImageUrl] = useState("");
+
+  function handleOnChange(e: React.FormEvent<HTMLInputElement>){
+    const target = e.target as HTMLInputElement & {
+      files: FileList;
+    }
+    console.log('target', target.files)
+    const previewImage = URL.createObjectURL(target.files[0]);
+    setImageUrl(previewImage);
+
+    //setFile(target.files[0]);
+  
+  
+  }
+
   return (
     <>
     <div className="home-header homefont">
@@ -82,8 +101,8 @@ function Home() {
                 <p>{getCountryName()}</p>
               </div>
 
-            
-              <button>Upload Profile Picture</button>
+
+              <input type="file" name="pfp_image" onChange={handleOnChange}/>
               
               
               <div className="card">
