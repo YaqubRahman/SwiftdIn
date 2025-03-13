@@ -82,7 +82,7 @@ function Home() {
           <div className="containerhome">
             <div className="childcontainer1">
               <div className="namecard">
-                <img src={pfp} className="logo" alt="pfp PlaceHolder" />
+                <img src={imageURL || pfp} className="logo" alt="pfp PlaceHolder" />
                 <div className="homefont">
                   <h1>{user_name}</h1>
                 </div>
