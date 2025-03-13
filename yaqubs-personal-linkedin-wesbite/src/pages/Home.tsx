@@ -53,7 +53,6 @@ function getCountryName() {
 
 
 function Home() {
-  const [file, setFile] = useState<File | undefined>();
   const [imageURL, setImageUrl] = useState("");
 
   function handleOnChange(e: React.FormEvent<HTMLInputElement>){
@@ -63,11 +62,8 @@ function Home() {
     console.log('target', target.files)
     const previewImage = URL.createObjectURL(target.files[0]);
     setImageUrl(previewImage);
-
-    //setFile(target.files[0]);
-  
-  
   }
+  
 
   return (
     <>
