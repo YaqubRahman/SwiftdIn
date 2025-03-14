@@ -50,24 +50,42 @@ function getCountryName() {
   }
 }
 
-const [selectedCountry, setCountry] = useState<string | null>(localStorage.getItem("country"));
-useEffect(() => {
-  function updateCountry(){
-    setCountry(localStorage.getItem("country"));
-  }
-
-  window.addEventListener("storage", updateCountry);
-
-return () => {
-  window.removeEventListener("storage", updateCountry);
-    };
-  }, []);
-
-
+  
 
 function Home() {
   const [imageURL, setImageUrl] = useState("");
+  const [selectedCountry, setCountry] = useState<string | null>(localStorage.getItem("country"));
 
+
+  useEffect(() => {
+    function updateCountry(){
+      setCountry(localStorage.getItem("country"));
+    }
+  
+    // Listen for localStorage changes in another tab
+    window.addEventListener("storage", updateCountry);
+  
+  return () => {
+    window.removeEventListener("storage", updateCountry);
+      };
+    }, []);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newCountry = localStorage.getItem("country");
+      if (newCountry !== selectedCountry) {
+        setCountry(newCountry);
+      }
+    }, 500); // Check every 500ms
+  
+    return () => clearInterval(interval);
+  }, [selectedCountry]);
+
+
+
+
+  
   function handleOnChange(e: React.FormEvent<HTMLInputElement>){
     const target = e.target as HTMLInputElement & {
       files: FileList;
