@@ -10,7 +10,7 @@ import IraqFlag from "../assets/CountryChoose/Iraq.png";
 import PakistanFlag from "../assets/CountryChoose/Pakistan.png";
 import MalasiaFlag from "../assets/CountryChoose/Malasia.png";
 import EgyptFlag from "../assets/CountryChoose/Egypt.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const countries = [
   { code: "BD", name: "Bangladesh", flag: BangladeshFlag },
@@ -49,6 +49,18 @@ function getCountryName() {
     }
   }
 }
+
+const [selectedCountry, setCountry] = useState<string | null>(localStorage.getItem("country"));
+useEffect(() => {
+  window.addEventListener("storage", () =>
+    setCountry(localStorage.getItem("country"));
+});
+
+return () => {
+  window.removeEventListener("storage", () => {
+    setCountry(localStorage.getItem("country"));
+    });
+  }, []);
 
 
 
