@@ -52,14 +52,15 @@ function getCountryName() {
 
 const [selectedCountry, setCountry] = useState<string | null>(localStorage.getItem("country"));
 useEffect(() => {
-  window.addEventListener("storage", () =>
+  function updateCountry(){
     setCountry(localStorage.getItem("country"));
-});
+  }
+
+  window.addEventListener("storage", updateCountry);
 
 return () => {
-  window.removeEventListener("storage", () => {
-    setCountry(localStorage.getItem("country"));
-    });
+  window.removeEventListener("storage", updateCountry);
+    };
   }, []);
 
 
