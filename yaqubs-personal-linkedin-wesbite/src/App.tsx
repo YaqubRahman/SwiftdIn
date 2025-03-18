@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import { LoginSignup } from './pages/LoginSignup';
 import  CountryChoose  from './pages/CountryChoose';
 import LandingPage from './pages/LandingPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 export default function App() {
   return (
@@ -13,9 +16,9 @@ export default function App() {
       <Routes>
 
         <Route path="/home" element={<Home />} />
-        <Route path="/" element={<LoginSignup/>} />
+        <Route path="/landingpage" element={<LoginSignup/>} />
         <Route path="/countrychoose" element={<CountryChoose/>}/>
-        <Route path="/landingpage" element={<LandingPage/>}/>
+        <Route path="/" element={<LandingPage/>}/>
 
       </Routes>
     </Router></>
