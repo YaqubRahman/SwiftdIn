@@ -1,16 +1,18 @@
+import logo from '../assets/SwiftdIn_Logo.png';
+import '../components/LandingPage.css'
+
 function LandingPage() {
     
-
-
     return(
         <>
-
         <h1>Swiftdn</h1>
         <p>Smarter, Simpler, Smoother</p>
 
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Swiftdn</a>
+    <a className="navbar-brand" href="#">
+    <img src={logo} alt="Swiftdn Logo" width="50" height="40" />
+    </a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -32,6 +34,16 @@ function LandingPage() {
     </div>
   </div>
 </nav>
+
+
+<div className="hero-section">
+        <div className="hero-text">
+            <h1 className="gradient-text">A new alternative to LinkdIn</h1>
+            <p>From the moment you decide to pursue medicine or pharmacy, we're here for you.</p>
+            <a className="btn" href="#services">Book Your Session</a>
+        </div>
+    </div>
+
 
         </>
     )

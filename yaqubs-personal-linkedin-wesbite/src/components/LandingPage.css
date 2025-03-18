@@ -1,0 +1,51 @@
+/* Set global styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+/* Gradient background */
+.hero-section {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+ /* Gradient effect */
+    color: white; /* Text color */
+}
+
+/* Set up the gradient for the text */
+.gradient-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(90deg, #4e54c8, #8f94fb); /* Define gradient */
+    -webkit-background-clip: text; /* Use the gradient as the text background */
+    -webkit-text-fill-color: transparent; /* Make the rest transparent to show gradient */
+    color: transparent; /* Fallback for unsupported browsers */
+  }
+  
+  /* Center the text block */
+  .hero-text {
+    text-align: center;
+    margin: 50px auto;
+    font-family: 'Arial', sans-serif;
+  }
+  
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #6c63ff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4e54c8; /* Darken button on hover */
+}
