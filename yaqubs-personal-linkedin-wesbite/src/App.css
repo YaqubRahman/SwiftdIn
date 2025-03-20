@@ -7,8 +7,8 @@
 
 /* General Styles */
 body {
-  background-color: #F1FAEE;
-  font-family: 'Roboto', sans-serif;
+  background-color: #f1faee;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Root Element */
@@ -16,7 +16,7 @@ body {
   min-width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #F1FAEE;
+  background-color: #f5f7fa;
 }
 
 /* Link Styles */
@@ -59,7 +59,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #D4F1F4;
+    background-color: #d4f1f4;
   }
   a:hover {
     color: #747bff;

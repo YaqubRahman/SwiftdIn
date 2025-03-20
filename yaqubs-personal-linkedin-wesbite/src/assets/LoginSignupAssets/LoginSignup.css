@@ -1,5 +1,6 @@
 /* Ensure the body and html take up full height */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -10,7 +11,7 @@ html, body {
   display: flex;
   place-items: center;
   min-height: 100vh; /* Ensure it fills the entire viewport */
-  background: linear-gradient(#2A00B7, #42006C);
+  background: linear-gradient(#2a00b7, #42006c);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -40,6 +41,9 @@ html, body {
   border-radius: 9px;
   align-items: center;
   min-height: 80vh; /* Adjust this to ensure the container takes up a significant portion of the page */
+  border-color: red;
+  border-width: 10px;
+  border-style: solid;
 }
 
 /* Other styles for elements inside container (no change needed) */
@@ -53,7 +57,7 @@ html, body {
 }
 
 .text {
-  color: #3C009D;
+  color: #3c009d;
   font-size: 48px;
   font-weight: 700;
 }
@@ -61,7 +65,7 @@ html, body {
 .underline {
   width: 61px;
   height: 6px;
-  background: #3C009D;
+  background: #3c009d;
   border-radius: 9px;
 }
 
@@ -79,7 +83,7 @@ html, body {
   margin: auto;
   width: 480px;
   height: 80px;
-  background: #EAEAEA;
+  background: #eaeaea;
   border-radius: 6px;
 }
 
@@ -132,6 +136,6 @@ html, body {
 }
 
 .gray {
-  background: #EAEAEA;
+  background: #eaeaea;
   color: #676767;
 }
