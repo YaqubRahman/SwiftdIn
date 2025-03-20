@@ -50,26 +50,24 @@ function getCountryName() {
   }
 }
 
-  
-
 function Home() {
   const [imageURL, setImageUrl] = useState("");
-  const [selectedCountry, setCountry] = useState<string | null>(localStorage.getItem("country"));
-
+  const [selectedCountry, setCountry] = useState<string | null>(
+    localStorage.getItem("country")
+  );
 
   useEffect(() => {
-    function updateCountry(){
+    function updateCountry() {
       setCountry(localStorage.getItem("country"));
     }
-  
+
     // Listen for localStorage changes in another tab
     window.addEventListener("storage", updateCountry);
-  
-  return () => {
-    window.removeEventListener("storage", updateCountry);
-      };
-    }, []);
 
+    return () => {
+      window.removeEventListener("storage", updateCountry);
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,114 +76,155 @@ function Home() {
         setCountry(newCountry);
       }
     }, 500); // Check every 500ms
-  
+
     return () => clearInterval(interval);
   }, [selectedCountry]);
 
-
-
-
-  
-  function handleOnChange(e: React.FormEvent<HTMLInputElement>){
+  function handleOnChange(e: React.FormEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement & {
       files: FileList;
-    }
-    console.log('target', target.files)
+    };
+    console.log("target", target.files);
     const previewImage = URL.createObjectURL(target.files[0]);
     setImageUrl(previewImage);
   }
-  
 
   return (
     <>
-    <div className="home-header homefont">
-        <h1>SwiftdIn</h1>
-        <div className="home-search-bar">
-          <input type="text" placeholder="Search for users..."/>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#"></a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#/home"
+                >
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Connections
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Messages
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Posts
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
+      </nav>
 
-        <div className="parent-container">
-          <div className="containerhome">
-            <div className="childcontainer1">
-              <div className="namecard">
-                <img src={imageURL || pfp} className="logo" alt="pfp PlaceHolder" />
-                <div className="homefont">
-                  <h1>{user_name}</h1>
-                </div>
-
-                <p>Junior Software Engineer</p>
-
-                <p>Currently working at SwiftdIn as a full stack engineer</p>
-
-
-                <img
-                  src={getCountryCode()}
-                  className="flag"
-                  alt="Country Flag"
-                />
-
-                <p>{getCountryName()}</p>
+      <div className="parent-container">
+        <div className="containerhome">
+          <div className="childcontainer1">
+            <div className="namecard">
+              <img
+                src={imageURL || pfp}
+                className="logo"
+                alt="pfp PlaceHolder"
+              />
+              <div className="homefont">
+                <h1>{user_name}</h1>
               </div>
 
+              <p>Junior Software Engineer</p>
 
-              <input type="file" name="pfp_image" onChange={handleOnChange}/>
-              
-              
-              <div className="card">
-                <h2>Experience</h2>
+              <p>Currently working at SwiftdIn as a full stack engineer</p>
 
-                <div className="trending">
-                  <p>
-                    2018-Present Meta - Junior Software Engineer<br></br>
-                    2014-2018 Netflix - Junior Software Engineer<br></br>
-                    2009-2014 Amazon - Junior Software Engineer<br></br>
-                    2008-2009 Apple - Junior Software Engineer<br></br>
-                    2006-2008 Microsoft - Junior Software Engineer<br></br>
-                  </p>
-                </div>
-              </div>
+              <img src={getCountryCode()} className="flag" alt="Country Flag" />
 
-              <div className="card">
-                <p>Available</p>
+              <p>{getCountryName()}</p>
+            </div>
+
+            <input type="file" name="pfp_image" onChange={handleOnChange} />
+
+            <div className="card">
+              <h2>Experience</h2>
+
+              <div className="trending">
+                <p>
+                  2018-Present Meta - Junior Software Engineer<br></br>
+                  2014-2018 Netflix - Junior Software Engineer<br></br>
+                  2009-2014 Amazon - Junior Software Engineer<br></br>
+                  2008-2009 Apple - Junior Software Engineer<br></br>
+                  2006-2008 Microsoft - Junior Software Engineer<br></br>
+                </p>
               </div>
             </div>
 
-            <p className="read-the-docs">This is a work in progress</p>
+            <div className="card">
+              <p>Available</p>
+            </div>
           </div>
 
-          
+          <p className="read-the-docs">This is a work in progress</p>
+        </div>
+
         <div className="containerconnections">
           <div className="card">
-          <h2>Connections List:</h2>
-          <div className="paragraph-font">
-            <div className="connection-item">
-          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
-          <p>Talip Tun</p>
-            </div>
-            
-            <div className="connection-item">
-          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
-          <p>Yaseen Barlas</p>
-            </div>
+            <h2>Connections List:</h2>
+            <div className="paragraph-font">
+              <div className="connection-item">
+                <img
+                  src={pfp}
+                  className="logo-connections"
+                  alt="pfp PlaceHolder"
+                />
+                <p>Talip Tun</p>
+              </div>
 
-            <div className="connection-item">
-          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
-          <p>Ahmad Sabsaby</p>
+              <div className="connection-item">
+                <img
+                  src={pfp}
+                  className="logo-connections"
+                  alt="pfp PlaceHolder"
+                />
+                <p>Yaseen Barlas</p>
+              </div>
+
+              <div className="connection-item">
+                <img
+                  src={pfp}
+                  className="logo-connections"
+                  alt="pfp PlaceHolder"
+                />
+                <p>Ahmad Sabsaby</p>
+              </div>
+
+              <div className="connection-item">
+                <img
+                  src={pfp}
+                  className="logo-connections"
+                  alt="pfp PlaceHolder"
+                />
+                <p>Sayed Iqbal</p>
+              </div>
             </div>
-
-          <div className="connection-item">
-          <img src={pfp} className="logo-connections" alt="pfp PlaceHolder" />
-          <p>Sayed Iqbal</p>
-          </div>
-
-          </div>
           </div>
         </div>
-
-
-        </div>
-
+      </div>
     </>
   );
 }

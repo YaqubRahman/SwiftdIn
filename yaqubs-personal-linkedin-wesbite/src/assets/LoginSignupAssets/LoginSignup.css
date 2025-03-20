@@ -11,13 +11,12 @@ body {
   display: flex;
   place-items: center;
   min-height: 100vh; /* Ensure it fills the entire viewport */
-  background: linear-gradient(#2a00b7, #42006c);
+  background-color: #f5f7fa;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #f1f1f1;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -41,9 +40,6 @@ body {
   border-radius: 9px;
   align-items: center;
   min-height: 80vh; /* Adjust this to ensure the container takes up a significant portion of the page */
-  border-color: red;
-  border-width: 10px;
-  border-style: solid;
 }
 
 /* Other styles for elements inside container (no change needed) */

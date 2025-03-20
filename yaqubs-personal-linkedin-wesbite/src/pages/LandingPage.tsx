@@ -8,7 +8,7 @@ import simple from "../assets/LandingPage/SimpleBoxImage.png";
 function LandingPage() {
   return (
     <>
-      <h1>Swiftdn</h1>
+      <h1>SwiftdIn</h1>
       <p>Smarter, Simpler, Smoother</p>
 
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -66,7 +66,7 @@ function LandingPage() {
 
       <div className="hero-section">
         <div className="hero-text">
-          <h1 className="gradient-text">A new alternative to LinkdIn</h1>
+          <h1 className="gradient-text">A new alternative to LinkedIn</h1>
           <p>Smarter 💡, Simpler 🪶, Smoother 🌊</p>
         </div>
       </div>
