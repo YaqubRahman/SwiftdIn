@@ -1,6 +1,10 @@
 import pfp from "../assets/pfpplaceholder.png";
 import flag from "../assets/UKflag.png";
 import "../components/Home.css";
+import home from "../assets/home.png";
+import connectionImage from "../assets/connections-images.png";
+import messageImage from "../assets/messages-image.png";
+import postImage from "../assets/posts-image.png";
 
 import BangladeshFlag from "../assets/CountryChoose/Bangladesh.png";
 import LebanonFlag from "../assets/CountryChoose/Lebanon.png";
@@ -113,25 +117,40 @@ function Home() {
                   aria-current="page"
                   href="#/home"
                 >
+                  <img src={home} alt="Swiftdn Logo" />
                   Home
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
+                  <img src={connectionImage} alt="Swiftdn Logo" />
                   Connections
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
+                  <img src={messageImage} alt="Swiftdn Logo" />
                   Messages
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
+                  <img src={postImage} alt="Swiftdn Logo" />
                   Posts
                 </a>
               </li>
             </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              ></input>
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
           </div>
         </div>
       </nav>
