@@ -1,6 +1,9 @@
 import logo from "../assets/SwiftdIn_Logo.png";
 import "../components/LandingPage.css";
 import { Link } from "react-router-dom";
+import office from "../assets/LandingPage/OfficePhoto.png";
+import tech from "../assets/LandingPage/TechSpeedImage.png";
+import simple from "../assets/LandingPage/SimpleBoxImage.png";
 
 function LandingPage() {
   return (
@@ -65,6 +68,38 @@ function LandingPage() {
         <div className="hero-text">
           <h1 className="gradient-text">A new alternative to LinkdIn</h1>
           <p>Smarter 💡, Simpler 🪶, Smoother 🌊</p>
+        </div>
+      </div>
+
+      <div className="card-row">
+        <div className="card" style={{ width: "18rem" }}>
+          <img src={office} className="card-img-top" alt="..." />
+          <div className="card-body">
+            <p className="card-text">
+              Crafted to empower connections. Designed for a more formal,
+              professional, and effective networking experience
+            </p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: "18rem" }}>
+          <img src={tech} className="card-img-top" alt="..." />
+          <div className="card-body">
+            <p className="card-text">
+              Experience the power of swift innovation. Our platform is designed
+              to keep you ahead—seamless, efficient, and built for progress
+            </p>
+          </div>
+        </div>
+
+        <div className="card" style={{ width: "18rem" }}>
+          <img src={simple} className="card-img-top" alt="..." />
+          <div className="card-body">
+            <p className="card-text">
+              Precision in design. Simplicity in execution. Everything you need,
+              ordered and streamlined for a clean and effortless experience
+            </p>
+          </div>
         </div>
       </div>
     </>
